@@ -1,0 +1,92 @@
+/* ---------- GENERAL ---------- */
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ---------- LOGIN ---------- */
+
+.login {
+    padding: 20px;
+}
+
+.login input {
+    padding: 6px 8px;
+    margin-right: 8px;
+}
+
+.login button {
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+/* ---------- LAYOUT PRINCIPAL ---------- */
+
+.layout {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 20px;
+    padding: 16px;
+    align-items: start;
+}
+
+/* ---------- SIDEBAR ---------- */
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar h3 {
+    margin: 0 0 8px 0;
+}
+
+/* ---------- THUMBNAILS ---------- */
+
+.thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.thumb {
+    width: 140px;
+    height: 90px;
+    object-fit: contain;
+    background: white;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.thumb:hover {
+    border: 2px solid black;
+}
+
+/* ---------- BOTÓN ---------- */
+
+.btn {
+    width: 140px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+/* ---------- VISOR DERECHO ---------- */
+
+.viewer {
+    border: 1px solid #ccc;
+    height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    background: #f9f9f9;
+}
+
+.big {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
