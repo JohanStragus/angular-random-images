@@ -135,9 +135,3 @@ public/
 - Gestión de estado en Angular
 - Persistencia con **LocalStorage**
 - Arquitectura **zoneless**
-
----
-
-## 👨‍💻 Autor
-
-Proyecto realizado como práctica de Angular.
