@@ -2,30 +2,39 @@
 <app-header></app-header>
 
 <!-- APP MAIN -->
-<div *ngIf="!logged">
-  <h2>Iniciar sesión</h2>
-  <input type="text" [(ngModel)]="username" placeholder="introduce tu nombre" />
-  <button (click)="login()">Iniciar sesión</button>
-</div>
+
+@if (!logged) {
+  <div>
+    <h2>Iniciar sesión</h2>
+    <input type="text" [(ngModel)]="username" placeholder="introduce tu nombre" />
+    <button (click)="login()">Iniciar sesión</button>
+  </div>
+}
 
 <!-- Si el usuario está logeado, se muestra el layout principal -->
-<div *ngIf="logged">
+@if (logged) {
+
   <!-- Bienvenida -->
   <h2 class="welcome">Bienvenido, {{ username }}</h2>
+
   <!-- Layout principal -->
   <div class="layout">
+
     <!-- Sidebar izquierda -->
     <div class="sidebar">
       <h3>Imágenes</h3>
 
       <!-- Thumbnails -->
       <div class="thumbnails">
-        <img
-          *ngFor="let img of imgFiles; let i = index"
-          [src]="'img/' + img"
-          (click)="selectImage(i)"
-          class="thumb"
-        />
+
+        @for (img of imgFiles; track img; let i = $index) {
+          <img
+            [src]="'img/' + img"
+            (click)="selectImage(i)"
+            class="thumb"
+          />
+        }
+
       </div>
       
       <!-- Botón de la imagen aleatoria -->
@@ -36,7 +45,8 @@
     <div class="viewer">
       <img [src]="selectedImage" class="big" />
     </div>
-  </div>
-</div>
 
-<router-outlet />
+  </div>
+}
+
+<router-outlet></router-outlet>
