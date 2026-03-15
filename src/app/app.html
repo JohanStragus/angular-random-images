@@ -3,19 +3,19 @@
 
 <!-- APP MAIN -->
 
-@if (!logged) {
+@if (!logged()) {
   <div>
     <h2>Iniciar sesión</h2>
-    <input type="text" [(ngModel)]="username" placeholder="introduce tu nombre" />
+    <input type="text" [ngModel]="username()" (ngModelChange)="username.set($event)" placeholder="introduce tu nombre" />
     <button (click)="login()">Iniciar sesión</button>
   </div>
 }
 
 <!-- Si el usuario está logeado, se muestra el layout principal -->
-@if (logged) {
+@if (logged()) {
 
   <!-- Bienvenida -->
-  <h2 class="welcome">Bienvenido, {{ username }}</h2>
+  <h2 class="welcome">Bienvenido, {{ username() }}</h2>
 
   <!-- Layout principal -->
   <div class="layout">
@@ -27,7 +27,7 @@
       <!-- Thumbnails -->
       <div class="thumbnails">
 
-        @for (img of imgFiles; track img; let i = $index) {
+        @for (img of imgFiles(); track img; let i = $index) {
           <img
             [src]="'img/' + img"
             (click)="selectImage(i)"

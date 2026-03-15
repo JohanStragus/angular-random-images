@@ -13,36 +13,36 @@ import { Header } from './layout/header/header';
 export class App {
   // ATRIBUTOS
   protected readonly title = signal('random_images');
-  public logged: boolean = false; // saber si esta logeado o no.
-  public username: string = ''; // nombre del usuario
+  public logged = signal(false); // saber si esta logeado o no.
+  public username = signal(''); // nombre del usuario
   private readonly IMG_PATH: string = 'img/'; // ruta de las imagenes
-  private imgIndex: number = 0; // en que posición del array está la imagen
+  private imgIndex = signal(0); // en que posición del array está la imagen
 
 
   // ATRIBUTO ARRAY
-  public imgFiles: string[] = [
+  public imgFiles = signal<string[]>([
     'goku.webp',
     'vegeta.webp',
     'piccolo.webp'
-  ];
+  ]);
 
   // GETTERS
   get selectedImage(): string {
-    return this.IMG_PATH + this.imgFiles[this.imgIndex];
+    return this.IMG_PATH + this.imgFiles()[this.imgIndex()];
   }
 
   // MÉTODOS
   public changeRandomImage(): void {
-    this.imgIndex = Math.floor(Math.random() * this.imgFiles.length);
+    this.imgIndex.set(Math.floor(Math.random() * this.imgFiles().length));
   }
 
   public selectImage(index: number): void {
-    this.imgIndex = index;
+    this.imgIndex.set(index);
   }
 
   // 3. Método para iniciar sesión, 
   public login(): void {
-    if (this.username.trim() === '') return;
-    this.logged = true;
+    if (this.username().trim() === '') return;
+    this.logged.set(true);
   }
 }
