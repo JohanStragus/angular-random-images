@@ -24,6 +24,16 @@
     <div class="sidebar">
       <h3>Imágenes</h3>
 
+      <!-- Formulario para subir imágenes -->
+      <div>
+        <input type="text" placeholder="Introduce nombre imagen" [ngModel]="newImage()" (ngModelChange)="newImage.set($event)" />
+        <button class="btn" (click)="addImage()">Agregar imagen</button>
+      </div>
+
+
+      <!-- Si hay imágenes, se muestran las miniaturas -->
+      
+      @if (imgFiles().length > 0) {
       <!-- Thumbnails -->
       <div class="thumbnails">
 
@@ -39,11 +49,14 @@
       
       <!-- Botón de la imagen aleatoria -->
       <button class="btn" (click)="changeRandomImage()">Imagen aleatoria</button>
+    }
     </div>
-
     <!-- Zona derecha -->
     <div class="viewer">
+
+      @if(imgFiles().length > 0) {
       <img [src]="selectedImage" class="big" />
+    }
     </div>
 
   </div>
